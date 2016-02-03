@@ -270,10 +270,13 @@ function(xset, params=getDefaultRetGroupStartingParams(), nSlaves=4, subdir="IPO
 
 optimizeRetGroupSlaveCluster <-
 function(task, xset, parameters) {
-      
+  print(paste("Working on task: ",task,sep=""))
+  varsUsage <- object.size(task) + object.size(xset) + object.size(parameters)
+  print(paste("Task : ",task," -- Vars memory usage : ",varsUsage,sep=""))
   processedData <- retcorGroup(xset, parameters, task)
 
   result <- getRGTVValues(processedData$xset, task, processedData$retcor_failed)
+  print(paste("Finished task : ",task,sep = ""))
 	return(result)
 
   
